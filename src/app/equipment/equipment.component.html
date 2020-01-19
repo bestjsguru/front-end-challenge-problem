@@ -1,0 +1,20 @@
+<div class="equipment-component container">
+    <div class="componen-wrapper" *ngIf="!error else error_wrapper">
+        <form [formGroup]="filterForm">
+            <input type="text" placeholder="Type Keyword to Filter" class="form-control input-filter" formControlName="keyword" />
+        </form>
+        <div class="equipment-list">
+            <ng-container *ngFor="let x of activeEquipments; index as idx; first as first">
+                <app-equipment-item *ngIf="x.active"
+                    [equipment]="x"
+                    [noBorder]="first"
+                    (remove)="onRemove(idx)" 
+                ></app-equipment-item>
+            </ng-container>
+        </div>
+    </div>
+    <ng-template #error_wrapper>
+        ERROR
+        Please refresh the browser 
+    </ng-template>
+</div>

@@ -1,0 +1,40 @@
+.equipment-row {
+    border-top: 1px solid #ddd;
+}
+
+.equipment-row.no-border {
+    border-top: none;
+}
+
+.equipment-row.yellow,
+.equipment-detail.yellow {
+    background: yellow;
+}
+
+.equipment-row .name {
+    flex: 1;
+}
+
+.equipment-row .fa-trash {
+    color: red;
+}
+
+.image {
+    min-width: 50px;
+}
+
+.image .thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.equipment-detail label {
+    color: gray;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.equipment-detail small {
+    color: blue;
+}

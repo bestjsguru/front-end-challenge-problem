@@ -1,0 +1,14 @@
+.equipment-list {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.input-filter {
+    max-width: 350px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 3px #eee;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+

@@ -1,0 +1,118 @@
+<div class="equipment-row m-0 p-3 d-flex" [class.yellow]="!equipment.equipment_type || !equipment.manufacturer" [class.no-border]="noBorder" (click)="toggleDetail()">
+    <div class="image mr-2">
+        <ng-container *ngIf="!equipment.equipment_photos; else thumbImg"></ng-container>
+        <ng-template #thumbImg>
+            <img class="thumbnail" [src]="equipment.equipment_photos[0]?.thumbnail_url" alt="" />
+        </ng-template>
+    </div>
+    <div class="name mr-2 d-flex flex-column justify-content-center">
+        <p class="m-0">{{ equipment.description }}</p>
+        <p class="m-0">
+            <span class="badge btn btn-secondary mr-1"><i class="fa fa-search"></i>{{ equipment.equipment_type }}</span>
+            <span class="badge btn btn-primary">{{ equipment.manufacturer }}</span>
+        </p>
+    </div>
+    <div class="action">
+        <i class="fa fa-trash" (click)="onRemove($event)"></i>
+    </div>
+</div>
+<div class="equipment-detail p-3" [class.hidden]="!opened" [class.yellow]="!equipment.equipment_type || !equipment.manufacturer">
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="model_number" class="control-label">Manufacturer</label>
+                    <div class="d-flex">
+                        <p>
+                            {{ equipment.manufacturer }}
+                            <a class="ml-2"><small>Change</small></a>
+                        </p>
+
+                        <button class="btn btn-secondary ml-auto">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="model_number" class="control-label">MODEL #</label>
+                    <div class="d-flex">
+                        <input type="text" id="model_number" class="form-control" formControlName="model_number" />
+                        <button class="btn btn-secondary ml-2">
+                            <i class="fas fa-brain"></i>
+                        </button>
+                        <button class="btn btn-secondary ml-5">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div> 
+                </div>
+                <div class="form-group">
+                    <label for="equipment_type" class="control-label">Equnotnotipment Type</label>
+                    <select formControlName="equipment_type" id="" class="form-control">
+                        <option value="Gas Range">Gas Range</option>
+                        <option value="Convection Oven">Convection Oven</option>
+                        <option value="Undercounter Refrigerator">Undercounter Refrigerator</option>
+                        <option value="Reach-In Refrigerator">Reach-In Refrigerator</option>
+                        <option value="Prep Table">Prep Table</option>
+                        <option value="Reach-In Refrigerator">Reach-In Refrigerator</option>
+                        <option value="Refrigeration - Other">Refrigeration - Other</option>
+                        <option value="Hot & Cold Food Well">Hot & Cold Food Well</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Description</label>
+                    <input type="text" class="form-control" formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Customer Description of Equipment</label>
+                    <input type="text" class="form-control" formControlName="description" />
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Serial #</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control" formControlName="serial_number"/>
+                        <button class="btn btn-secondary ml-2" >
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Relative Location</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="image col">
+                <label for="model_number" class="control-label d-flex">Unit photos</label>
+                <ng-container *ngIf="!equipment.equipment_photos; else fullImg">NO PHOTOS</ng-container>
+                <ng-template #fullImg>
+                    <img class="thumbnail" [src]="equipment.equipment_photos[0]?.thumbnail_url" alt="NO VALID IMAGE" />
+                </ng-template>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="" class="control-label">Purchase date</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                            formControlName="location" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="" class="control-label">Installation date</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                            formControlName="location" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
